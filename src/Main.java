@@ -33,7 +33,7 @@ public class Main {
     }
 
     public static void nomeporGenero() {
-        // Criando uma lista de produtos
+        // Criando uma lista
         List<Pessoa> pessoas = Arrays.asList(
                 new Pessoa("Antonio", "Masculino"),
                 new Pessoa("Cesar", "Masculino"),
@@ -44,27 +44,27 @@ public class Main {
         );
         System.out.println(" ");
         System.out.println("Listar nomes por genero, utilizando o MAP. ");
-        // Criando um mapa para agrupar produtos por categoria
+        // Criando um mapa para agrupar por categoria
         Map<String, List<Pessoa>> listaPorGenero = new HashMap<>();
 
         // Iterando sobre a lista
         for (Pessoa pessoa : pessoas) {
-            String categoria = pessoa.getGenero();
+            String genero = pessoa.getGenero();
 
-            // Se a categoria ainda não estiver no mapa, adicionar
-            listaPorGenero.computeIfAbsent(categoria, k -> new ArrayList<>()).add(pessoa);
+            // Se ainda não estiver no mapa, adicionar
+            listaPorGenero.computeIfAbsent(genero, k -> new ArrayList<>()).add(pessoa);
         }
 
-        // Imprimindo por categoria
+        // Imprimindo
         for (Map.Entry<String, List<Pessoa>> entry : listaPorGenero.entrySet()) {
-            String categoria = entry.getKey();
+            String genero = entry.getKey();
             List<Pessoa> listaDoGenero = entry.getValue();
 
-            System.out.println("Genero: " + categoria);
+            System.out.println("Genero: " + genero);
 
-            // Iterando dentro da categoria
-            for (Pessoa produto : listaDoGenero) {
-                System.out.println("  - " + produto);
+            //
+            for (Pessoa pessoa : listaDoGenero) {
+                System.out.println("  - " + pessoa);
             }
         }
     }
