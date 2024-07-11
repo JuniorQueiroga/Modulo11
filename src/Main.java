@@ -19,36 +19,93 @@ public class Main {
         System.out.println("* exemploListaSplit *");
         String strMain = "Antonio, Bruno, Rafael, Bruna, Cesar, Daiane";
 
-         String[] arrSplit_2 = strMain.split(", ");
-        for (int i=0; i < arrSplit_2.length; i++) {
-     //       System.out.println(arrSplit_2[i]);
-             List<Aluno> lista = new ArrayList<Aluno>();
-             Aluno a = new Aluno(arrSplit_2[i]);
+        String[] arrSplit = strMain.split(", ");
+        List<Aluno> lista = new ArrayList<>();
+
+        for (String nome: arrSplit) {
+            Aluno a = new Aluno(nome);
             lista.add(a);
-           Collections.sort(lista);
-           System.out.println(lista);
-     //   System.out.println(lista);
-    //    for (int i=0; i < arrSplit.length; i++) {
-     //       System.out.println(arrSplit[i]);
         }
-//
+        Collections.sort(lista);
+        for (int i=0; i < 6 ; i++) {
+            System.out.println(lista.get(i));
+        }
     }
+
     public static void nomeporGenero() {
-        System.out.println("* NomePorGenero *");
-        Map<Integer, String> mapaNomes = new HashMap<>();
+        // Criando uma lista de produtos
+        List<Pessoa> pessoas = Arrays.asList(
+                new Pessoa("Antonio", "Masculino"),
+                new Pessoa("Cesar", "Masculino"),
+                new Pessoa("Fabio", "Masculino"),
+                new Pessoa("Amanda", "Feminino"),
+                new Pessoa("Fernanda", "Feminino"),
+                new Pessoa("Hugo", "Masculino")
+        );
+        System.out.println(" ");
+        System.out.println("Listar nomes por genero, utilizando o MAP. ");
+        // Criando um mapa para agrupar produtos por categoria
+        Map<String, List<Pessoa>> listaPorGenero = new HashMap<>();
+
+        // Iterando sobre a lista
+        for (Pessoa pessoa : pessoas) {
+            String categoria = pessoa.getGenero();
+
+            // Se a categoria ainda não estiver no mapa, adicionar
+            listaPorGenero.computeIfAbsent(categoria, k -> new ArrayList<>()).add(pessoa);
+        }
+
+        // Imprimindo por categoria
+        for (Map.Entry<String, List<Pessoa>> entry : listaPorGenero.entrySet()) {
+            String categoria = entry.getKey();
+            List<Pessoa> listaDoGenero = entry.getValue();
+
+            System.out.println("Genero: " + categoria);
+
+            // Iterando dentro da categoria
+            for (Pessoa produto : listaDoGenero) {
+                System.out.println("  - " + produto);
+            }
+        }
+    }
+}
+
+
+
+   //     String strMain = "Antonio-M, Bruno-M, Rafael-M, Bruna-F, Cesar-M, Daiane-F";
+//
+  //      String[] arrSplit = strMain.split(", ");
+    //    List<Aluno> lista = new ArrayList<>();
+
+      //  for (String nome: arrSplit) {
+       //     Aluno a = new Aluno(nome);
+     //       lista.add(a);
+      //  }
+     //   Collections.sort(lista);
+        //for (int i=0; i < 6 ; i++) {
+     //   System.out.println(lista);
+     //   Map<String, Integer> separarSexo = new HashMap<>();
+     //   for (String nome : lista) {
+     //       separarSexo.put
+      //  }
+
+       // }
+
+
+
+     //   System.out.println("* NomePorGenero *");
+     //   Map<Integer, String> mapaNomes = new HashMap<>();
         // Masculino
-        mapaNomes.put(1, "Antonio, Joao");
-        mapaNomes.put(2, "Ana, Fernanda");
-            System.out.println("Masculino: " + mapaNomes.get(1));
-            System.out.println("Feminino: " + mapaNomes.get(2));
+     //   mapaNomes.put(1, "Antonio, Joao");
+     //   mapaNomes.put(2, "Ana, Fernanda");
+      //      System.out.println("Masculino: " + mapaNomes.get(1));
+       //     System.out.println("Feminino: " + mapaNomes.get(2));
         //   System.out.println(lista);
             //    for (int i=0; i < arrSplit.length; i++) {
             //       System.out.println(arrSplit[i]);
-        }
+//        }
 //
 
-
-}
 
     /**
 // lista.remove (index: 0); exclui

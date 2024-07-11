@@ -1,16 +1,16 @@
 public class Aluno implements Comparable<Aluno> {
     public String nome;
-  //  public String genero;
+    public String genero;
 
     public Aluno(String nome) {
         this.nome = nome;
-    }
+   }
 
-//    public Aluno(String nome) {
-//          this(nome);
-//        this.genero = genero;
- //
-    //   }
+    public Aluno(String nome, String genero) {
+        this.nome = nome;
+        this.genero = genero;
+
+       }
 
     @Override
     public String toString() {
@@ -29,11 +29,11 @@ public class Aluno implements Comparable<Aluno> {
         return this.nome.compareTo(aluno.getNome());
     }    
 
-//    public String getGenero() {
-  //      return genero;
-  //  }
+    public String getGenero() {
+       return genero;
+    }
 
-  //  public void setGenero(String genero) {
-    //    this.genero = genero;
-   // }
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
 }
